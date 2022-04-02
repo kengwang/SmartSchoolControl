@@ -1,0 +1,182 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Description/@EntryValue">Create a webapi and Return a ServerReturnValue</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Field/=ACTION/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Field/=ACTION/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Field/=PARAMS/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Field/=PARAMS/Order/@EntryValue">1</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Scope/=B68999B9D6B43E47A02B22C12A54C3CC/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Scope/=B68999B9D6B43E47A02B22C12A54C3CC/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Scope/=B68999B9D6B43E47A02B22C12A54C3CC/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Shortcut/@EntryValue">webapi</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Scope/=5E94A9784FC48C40AD7661820E4BE01D/@KeyIndexDefined">False</s:Boolean>
+	
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Text/@EntryValue">[Route("[action]")]
+[HttpPost]
+public JsonResult $ACTION$($PARAMS$)
+{
+$END$
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/Description/@EntryValue">The implement of a repository</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/Field/=EntityName/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/Field/=EntityName/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/Shortcut/@EntryValue">repositoryImplement</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EDF33004C144754C928707515514413D/Text/@EntryValue">public class Db$EntityName$Repository : I$EntityName$Repository
+{
+
+    private readonly ServerDbContext _context;
+    
+    public Db$EntityName$Repository(ServerDbContext context)
+    {
+        _context = context;
+    }
+
+    public $EntityName$ Insert($EntityName$ entity)
+    {
+        _context.$EntityName$s.Add(entity);
+        _context.SaveChanges();
+        return entity;
+    }
+
+    public async Task&lt;$EntityName$&gt; InsertAsync($EntityName$ entity)
+    {
+        _context.$EntityName$s.Add(entity);
+        await _context.SaveChangesAsync();
+        return entity;
+    }
+
+    public void Delete($EntityName$ entity)
+    {
+        _context.$EntityName$s.Remove(entity);
+        _context.SaveChanges();
+    }
+
+    public async Task DeleteAsync($EntityName$ entity)
+    {
+        _context.$EntityName$s.Remove(entity);
+        await _context.SaveChangesAsync();
+    }
+
+    public void Delete(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        _context.$EntityName$s.RemoveRange(_context.$EntityName$s.Where(predicate));
+        _context.SaveChanges();
+    }
+
+    public async Task DeleteAsync(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        _context.$EntityName$s.RemoveRange(_context.$EntityName$s.Where(predicate));
+        await _context.SaveChangesAsync();
+    }
+
+    public $EntityName$ Update($EntityName$ entity)
+    {
+        var attachedEntityEntry = _context.$EntityName$s.Attach(entity);
+        attachedEntityEntry.State = EntityState.Modified;
+        _context.SaveChanges();
+        return entity;
+    }
+
+    public async Task&lt;$EntityName$&gt; UpdateAsync($EntityName$ entity)
+    {
+        var attachedEntityEntry = _context.$EntityName$s.Attach(entity);
+        attachedEntityEntry.State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+        return entity;
+    }
+
+    public IQueryable&lt;$EntityName$&gt; GetAll()
+    {
+        return _context.$EntityName$s.AsQueryable();
+    }
+
+    public List&lt;$EntityName$&gt; GetAllList()
+    {
+        return _context.$EntityName$s.ToList();
+    }
+
+    public Task&lt;List&lt;$EntityName$&gt;&gt; GetAllListAsync()
+    {
+        return Task.FromResult(_context.$EntityName$s.ToList());
+    }
+
+    public List&lt;$EntityName$&gt; GetAllList(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        return _context.$EntityName$s.Where(predicate).ToList();
+    }
+
+    public Task&lt;List&lt;$EntityName$&gt;&gt; GetAllListAsync(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        return Task.FromResult(_context.$EntityName$s.Where(predicate).ToList());
+    }
+
+    public $EntityName$ Single(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        return _context.$EntityName$s.First(predicate);
+    }
+
+    public async Task&lt;$EntityName$&gt; SingleAsync(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        return await _context.$EntityName$s.FirstAsync(predicate);
+    }
+
+    public $EntityName$? FirstOrDefault(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        return _context.$EntityName$s.FirstOrDefault(predicate);
+    }
+
+    public async Task&lt;$EntityName$?&gt; FirstOrDefaultAsync(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        return await _context.$EntityName$s.FirstOrDefaultAsync(predicate);
+    }
+
+    public int Count()
+    {
+        return _context.$EntityName$s.Count();
+    }
+
+    public async Task&lt;int&gt; CountAsync()
+    {
+        return await _context.$EntityName$s.CountAsync();
+    }
+
+    public int Count(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        return _context.$EntityName$s.Count(predicate);
+    }
+
+    public async Task&lt;int&gt; CountAsync(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        return await _context.$EntityName$s.CountAsync(predicate);
+    }
+
+    public long CountLong()
+    {
+        return _context.$EntityName$s.LongCount();
+    }
+
+    public async Task&lt;long&gt; CountLongAsync()
+    {
+        return await _context.$EntityName$s.LongCountAsync();
+    }
+
+    public long CountLong(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        return _context.$EntityName$s.LongCount(predicate);
+    }
+
+    public async Task&lt;long&gt; CountLongAsync(Expression&lt;Func&lt;$EntityName$, bool&gt;&gt; predicate)
+    {
+        return await _context.$EntityName$s.LongCountAsync(predicate);
+    }
+}</s:String></wpf:ResourceDictionary>
