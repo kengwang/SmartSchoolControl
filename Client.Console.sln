@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Console", "Client.Console\Client.Console.csproj", "{6291C56D-134F-4D9E-BEC0-B51E04BE5490}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSchoolControl.Client.Console", "SmartSchoolControl.Client.Console\SmartSchoolControl.Client.Console.csproj", "{6291C56D-134F-4D9E-BEC0-B51E04BE5490}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSchoolControl.Common.Base", "SmartSchoolControl.Common.Base\SmartSchoolControl.Common.Base.csproj", "{9E046149-439A-475F-A030-E9C1BB118768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSchoolControl.Client.Db", "SmartSchoolControl.Client.Db\SmartSchoolControl.Client.Db.csproj", "{68827374-952A-4108-8294-7CE27CC03E61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +16,13 @@ Global
 		{6291C56D-134F-4D9E-BEC0-B51E04BE5490}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6291C56D-134F-4D9E-BEC0-B51E04BE5490}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6291C56D-134F-4D9E-BEC0-B51E04BE5490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E046149-439A-475F-A030-E9C1BB118768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E046149-439A-475F-A030-E9C1BB118768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E046149-439A-475F-A030-E9C1BB118768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E046149-439A-475F-A030-E9C1BB118768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68827374-952A-4108-8294-7CE27CC03E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68827374-952A-4108-8294-7CE27CC03E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68827374-952A-4108-8294-7CE27CC03E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68827374-952A-4108-8294-7CE27CC03E61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

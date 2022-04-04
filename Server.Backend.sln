@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Backend", "Server.Backend\Server.Backend.csproj", "{9322E9B5-73B1-4D17-A52E-95BBC553824A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSchoolControl.Server.Backend", "SmartSchoolControl.Server.Backend\SmartSchoolControl.Server.Backend.csproj", "{9322E9B5-73B1-4D17-A52E-95BBC553824A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Db", "Server.Db\Server.Db.csproj", "{AA25DA4B-C7F4-4807-836E-5FBCAE9C1CFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSchoolControl.Server.Db", "SmartSchoolControl.Server.Db\SmartSchoolControl.Server.Db.csproj", "{AA25DA4B-C7F4-4807-836E-5FBCAE9C1CFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Base", "Server.Base\Server.Base.csproj", "{6FA49DDA-85E0-4D77-8E10-51E450EBEF56}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSchoolControl.Common.Base", "SmartSchoolControl.Common.Base\SmartSchoolControl.Common.Base.csproj", "{6FA49DDA-85E0-4D77-8E10-51E450EBEF56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

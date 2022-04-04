@@ -16,7 +16,7 @@
 	
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7FFF86ADB836614EA45794B141527E16/Text/@EntryValue">[Route("[action]")]
 [HttpPost]
-public JsonResult $ACTION$($PARAMS$)
+public async Task&lt;ServerReturnBase&gt; $ACTION$($PARAMS$)
 {
 $END$
 }</s:String>

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>SmartSchoolControl.Common.Base</AssemblyName>
+        <RootNamespace>SmartSchoolControl.Common.Base</RootNamespace>
+        <PackageId>SmartSchoolControl.Common.Base</PackageId>
+        <Company>SmartSchoolControl.Common.Base</Company>
+        <Product>SmartSchoolControl.Common.Base</Product>
+    </PropertyGroup>
+
+</Project>

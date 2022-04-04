@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <AssemblyName>SmartSchoolControl.Server.Backend</AssemblyName>
+        <RootNamespace>SmartSchoolControl.Server.Backend</RootNamespace>
+        <PackageId>SmartSchoolControl.Server.Backend</PackageId>
+        <Authors>Kengwang</Authors>
+        <Company>Kengwang</Company>
+        <Product>SmartSchoolControl.Server.Backend</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.3">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
+        <PackageReference Include="Serilog.Extensions.Autofac.DependencyInjection" Version="4.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SmartSchoolControl.Server.Db\SmartSchoolControl.Server.Db.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controllers\ClientApi" />
+    </ItemGroup>
+
+</Project>
