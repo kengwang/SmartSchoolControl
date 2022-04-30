@@ -7,25 +7,25 @@ public class ServerReturnBase<TPackage> : ObjectResult where TPackage : class
 {
     public ServerReturnBase(ServerReturnModel<TPackage> model, int httpStatusCode = 200) : base(model)
     {
-        StatusCode = httpStatusCode;
+        //StatusCode = httpStatusCode;
     }
 
     public ServerReturnBase(TPackage? data = null) : base(new ServerReturnModel<TPackage>(true, "success", 200, data))
     {
-        StatusCode = 200;
+        //StatusCode = 200;
     }
 
     public ServerReturnBase(bool status = true, string message = "success", int code = 200,
         TPackage? data = null,
         int httpStatusCode = 200) : base(new ServerReturnModel<TPackage>(status, message, code, data))
     {
-        StatusCode = httpStatusCode;
+        //StatusCode = httpStatusCode;
     }
 
     public ServerReturnBase(bool status = true, string message = "success", int code = 200,
         int httpStatusCode = 200) : base(new ServerReturnModel<TPackage>(status, message, code))
     {
-        StatusCode = httpStatusCode;
+        //StatusCode = httpStatusCode;
     }
     
     public static readonly ServerReturnBase<TPackage> NotFound = new(new ServerReturnModel<TPackage>(false, "Not Found", -404), 404);
@@ -43,16 +43,16 @@ public class ServerReturnBase : ObjectResult
     public static ServerReturnBase BadRequest = new(new ServerReturnModel(false, "Bad Request", -400), 400);
 
     public static ServerReturnBase ParamNotCompleted =
-        new(new ServerReturnModel(false, "Incomplete parameters", -400), 400);
+        new(new ServerReturnModel(false, "参数不全", -400), 400);
 
     public ServerReturnBase(ServerReturnModel model, int httpStatusCode = 200) : base(model)
     {
-        StatusCode = httpStatusCode;
+        //StatusCode = httpStatusCode;
     }
 
     public ServerReturnBase(bool status = true, string message = "success", int code = 200,
         int httpStatusCode = 200) : base(new ServerReturnModel(status, message, code))
     {
-        StatusCode = httpStatusCode;
+        //StatusCode = httpStatusCode;
     }
 }

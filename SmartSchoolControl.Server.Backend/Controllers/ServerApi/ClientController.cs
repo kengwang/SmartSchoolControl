@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SmartSchoolControl.Common.Base.Abstractions;
+using SmartSchoolControl.Common.Base.ApiModels.Packages.Requests;
 using SmartSchoolControl.Common.Base.DbModels;
 using SmartSchoolControl.Server.Backend.Models;
 
@@ -19,9 +20,9 @@ namespace SmartSchoolControl.Server.Backend.Controllers.ServerApi
         }
         
         [HttpPost]
-        public async Task<ServerReturnBase<Client>> Get(Guid id)
+        public async Task<ServerReturnBase<Client>> Get([FromBody] ClientGetPackage package)
         {
-            var client = await _clientRepository.FirstOrDefaultAsync(t => t.Id == id);
+            var client = await _clientRepository.FirstOrDefaultAsync(t => t.Id == package.Id);
             return client == null ? ServerReturnBase<Client>.NotFound : new ServerReturnBase<Client>(client);
         }
 

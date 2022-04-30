@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartSchoolControl.Server.Db;
 
@@ -10,9 +11,10 @@ using SmartSchoolControl.Server.Db;
 namespace SmartSchoolControl.Server.Db.Migrations
 {
     [DbContext(typeof(ServerSqLiteDbContext))]
-    partial class ServerSqLiteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220404162028_AddClientInfo")]
+    partial class AddClientInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -79,30 +81,6 @@ namespace SmartSchoolControl.Server.Db.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clients");
-                });
-
-            modelBuilder.Entity("SmartSchoolControl.Common.Base.DbModels.ClientLogging", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("ClientId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Source")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("ClientLogging");
                 });
 
             modelBuilder.Entity("SmartSchoolControl.Common.Base.DbModels.ScheduledTask", b =>
@@ -241,13 +219,6 @@ namespace SmartSchoolControl.Server.Db.Migrations
                         .HasForeignKey("ClientId");
                 });
 
-            modelBuilder.Entity("SmartSchoolControl.Common.Base.DbModels.ClientLogging", b =>
-                {
-                    b.HasOne("SmartSchoolControl.Common.Base.DbModels.Client", null)
-                        .WithMany("Loggings")
-                        .HasForeignKey("ClientId");
-                });
-
             modelBuilder.Entity("SmartSchoolControl.Common.Base.DbModels.ScheduledTask", b =>
                 {
                     b.HasOne("SmartSchoolControl.Common.Base.DbModels.Workflow", "Workflow")
@@ -274,8 +245,6 @@ namespace SmartSchoolControl.Server.Db.Migrations
             modelBuilder.Entity("SmartSchoolControl.Common.Base.DbModels.Client", b =>
                 {
                     b.Navigation("ClientInfos");
-
-                    b.Navigation("Loggings");
                 });
 
             modelBuilder.Entity("SmartSchoolControl.Common.Base.DbModels.ScheduledTask", b =>

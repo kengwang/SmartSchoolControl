@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SmartSchoolControl.Common.Base.ApiModels.Packages.Requests;
 
 namespace SmartSchoolControl.Common.Base.DbModels;
 
@@ -19,7 +20,10 @@ public class Client
     
     public List<ScheduledTask> Tasks { get; set; } = new();
     
-    [NotMapped] public bool IsOnline => (DateTime.Now - LastHeartBeatTime).TotalMinutes > 1;
+    [NotMapped] public bool IsOnline => (DateTime.Now - LastHeartBeatTime).TotalMinutes < 1;
+    public List<ClientInfo> ClientInfos { get; set; } = new();
+    
+    public List<ClientLogging> Loggings { get; set; } = new();
 }
 
 public class ModifiedAssociation
@@ -27,6 +31,13 @@ public class ModifiedAssociation
     public ModifiedAssociationType Type { get; set; }
     public ModifiedAssociationObjectType ObjectType { get; set; }
     public Guid ObjectId { get; set; }
+}
+
+public class ClientLogging
+{
+    public Guid Id { get; set; }
+    public string Message { get; set; }
+    public string Source { get; set; }
 }
 
 public enum ModifiedAssociationType

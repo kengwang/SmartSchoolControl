@@ -39,7 +39,7 @@ builder.Services.AddControllers().ConfigureApiBehaviorOptions(apiBehaviorOptions
         new ServerReturnBase<object>(new ServerReturnModel<object>(false, "Incomplete parameters", -400,
             builder.Environment.IsDevelopment() ? context.ModelState : null), 400);
 });
-
+builder.Services.AddCors(t=>t.AddPolicy("AllowAll", p=>p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -53,7 +53,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseCors("AllowAll");
+
+//app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 

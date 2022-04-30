@@ -18,7 +18,7 @@ public class ClientStateManager : IClientStateManager
 
     public async void LoadClientState()
     {
-        var response = await _serverConnection.RequestAsync<ServerReturnModel<ServerOnlinePackage>,ServerOnlinePackage>("/api/Client/Online",
+        var response = await _serverConnection.RequestAsync<ServerOnlinePackage, ClientOnlinePackage>("Client/Online",
             _packageFactory.AppendClientId(new ClientOnlinePackage()));
         if (response?.Status == true)
         {

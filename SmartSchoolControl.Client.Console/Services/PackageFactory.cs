@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using SmartSchoolControl.Client.Console.Abstractions;
 using SmartSchoolControl.Common.Base.ApiModels.Packages.Requests;
 
@@ -6,10 +7,11 @@ namespace SmartSchoolControl.Client.Console.Services;
 
 public class PackageFactory : IPackageFactory
 {
-    private Guid _clientId; 
-    public PackageFactory(IConfiguration configuration)
+    private Guid _clientId;
+
+    public PackageFactory(IOptions<ApiSetting>? options)
     {
-        _clientId = configuration.GetValue<Guid>("ClientId");
+        _clientId = options?.Value.ClientId ?? Guid.Empty;
     }
 
     public TPackage AppendClientId<TPackage>(TPackage package) where TPackage : ClientPackageBase

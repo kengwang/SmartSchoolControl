@@ -21,7 +21,7 @@ namespace SmartSchoolControl.Server.Backend.Controllers.ClientApi
         }
 
         [HttpPost]
-        public async Task<ServerReturnBase> Register([FromBody] ClientRegisterPackage? registerPackage)
+        public async Task<ServerReturnBase> Register(ClientRegisterPackage? registerPackage)
         {
             if (registerPackage is null) return ServerReturnBase.ParamNotCompleted;
             await _clientRepository.InsertAsync(new Client
@@ -43,6 +43,36 @@ namespace SmartSchoolControl.Server.Backend.Controllers.ClientApi
                 ? new ServerReturnBase<ServerOnlinePackage>(false, "客户端不存在", 404, -404)
                 : new ServerReturnBase<ServerOnlinePackage>(
                     new ServerOnlinePackage(client.Tasks, client.Permissions, _pluginManager.Plugins));
+        }
+
+        [Route("")]
+        [HttpPost]
+        public async Task<ServerReturnBase> HeartBeat(ClientHeartBeatPackage? package)
+        {
+            if (package is null) return ServerReturnBase.ParamNotCompleted;
+            var client = await _clientRepository.FirstOrDefaultAsync(t => t.Id == package.ClientId);
+            if (client == null) return ServerReturnBase.NotFound;
+            client.LastHeartBeatTime = DateTime.Now;
+            client.ClientInfos = package.ClientInfos;
+            await _clientRepository.UpdateAsync(client);
+            return ServerReturnBase.Ok;
+        }
+
+        [Route("")]
+        [HttpPost]
+        public async Task<ServerReturnBase> Logging(ClientLoggingPackage? package)
+        {
+            if (package is null) return ServerReturnBase.ParamNotCompleted;
+            var client = await _clientRepository.FirstOrDefaultAsync(t => t.Id == package.ClientId);
+            if (client == null) return ServerReturnBase.NotFound;
+            client.Loggings.Add(new ClientLogging
+            {
+                Id = Guid.NewGuid(),
+                Message = package.Message,
+                Source = package.Source
+            });
+            await _clientRepository.UpdateAsync(client);
+            return ServerReturnBase.Ok;
         }
     }
 }
