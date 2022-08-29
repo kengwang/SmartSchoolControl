@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.Server", "SchoolComputerControl.Server\SchoolComputerControl.Server.csproj", "{6A29BF79-17A3-4A9E-848E-A462E9A0839E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.CommunicationPackages", "..\Common\SchoolComputerControl.CommunicationPackages\SchoolComputerControl.CommunicationPackages.csproj", "{8433D362-B471-42BF-A9E7-6D2CE02EFAE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.PluginManager", "..\Common\SchoolComputerControl.PluginManager\SchoolComputerControl.PluginManager.csproj", "{630A4C79-80FB-44C3-96DC-6EB28E066943}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.PluginBase", "..\Common\SchoolComputerControl.PluginBase\SchoolComputerControl.PluginBase.csproj", "{DA9AC48F-85FA-403C-AEE4-302DF60147F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.ServerPluginBase", "..\Common\SchoolComputerControl.ServerPluginBase\SchoolComputerControl.ServerPluginBase.csproj", "{55BB3D82-E5CA-40CD-A59B-CFBA23D89374}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.ExamplePluginServer", "..\Plugin\SchoolComputerControl.ExamplePlugin\SchoolComputerControl.ExamplePluginServer\SchoolComputerControl.ExamplePluginServer.csproj", "{1F61A522-9847-4E0D-895B-947A5BC33249}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A29BF79-17A3-4A9E-848E-A462E9A0839E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A29BF79-17A3-4A9E-848E-A462E9A0839E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A29BF79-17A3-4A9E-848E-A462E9A0839E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A29BF79-17A3-4A9E-848E-A462E9A0839E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8433D362-B471-42BF-A9E7-6D2CE02EFAE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8433D362-B471-42BF-A9E7-6D2CE02EFAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8433D362-B471-42BF-A9E7-6D2CE02EFAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8433D362-B471-42BF-A9E7-6D2CE02EFAE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{630A4C79-80FB-44C3-96DC-6EB28E066943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{630A4C79-80FB-44C3-96DC-6EB28E066943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{630A4C79-80FB-44C3-96DC-6EB28E066943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{630A4C79-80FB-44C3-96DC-6EB28E066943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA9AC48F-85FA-403C-AEE4-302DF60147F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA9AC48F-85FA-403C-AEE4-302DF60147F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA9AC48F-85FA-403C-AEE4-302DF60147F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA9AC48F-85FA-403C-AEE4-302DF60147F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55BB3D82-E5CA-40CD-A59B-CFBA23D89374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BB3D82-E5CA-40CD-A59B-CFBA23D89374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55BB3D82-E5CA-40CD-A59B-CFBA23D89374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55BB3D82-E5CA-40CD-A59B-CFBA23D89374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F61A522-9847-4E0D-895B-947A5BC33249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F61A522-9847-4E0D-895B-947A5BC33249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F61A522-9847-4E0D-895B-947A5BC33249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F61A522-9847-4E0D-895B-947A5BC33249}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

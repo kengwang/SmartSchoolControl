@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.ExamplePlugin", "SchoolComputerControl.ExamplePlugin\SchoolComputerControl.ExamplePlugin.csproj", "{A98D899B-6D77-4A4B-8604-63AC7E2FD877}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.ServerPluginBase", "..\..\Common\SchoolComputerControl.ServerPluginBase\SchoolComputerControl.ServerPluginBase.csproj", "{7E1DC4D8-3E5E-48DB-BB60-07276BFEE1F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A98D899B-6D77-4A4B-8604-63AC7E2FD877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98D899B-6D77-4A4B-8604-63AC7E2FD877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98D899B-6D77-4A4B-8604-63AC7E2FD877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98D899B-6D77-4A4B-8604-63AC7E2FD877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E1DC4D8-3E5E-48DB-BB60-07276BFEE1F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E1DC4D8-3E5E-48DB-BB60-07276BFEE1F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E1DC4D8-3E5E-48DB-BB60-07276BFEE1F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E1DC4D8-3E5E-48DB-BB60-07276BFEE1F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
