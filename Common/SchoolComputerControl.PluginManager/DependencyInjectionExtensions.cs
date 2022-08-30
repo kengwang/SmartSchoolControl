@@ -18,7 +18,7 @@ public static class DependencyInjectionExtensions
 
     public class PluginManagerOptions
     {
-        public string? PluginRootDirectory { get; set; } = Environment.CurrentDirectory + "/plugin";
+        public string? PluginRootDirectory { get; set; } = Environment.CurrentDirectory + "/plugins";
         public Func<IPluginManager>? CustomPluginManagerActivator { get; set; }
     }
 }

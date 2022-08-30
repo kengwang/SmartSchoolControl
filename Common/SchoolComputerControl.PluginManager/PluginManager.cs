@@ -23,7 +23,7 @@ public class PluginManager : IPluginManager
             var pluginId = Path.GetFileName(pluginDirectory);
             var pluginPath = Path.Combine(pluginDirectory, $"{pluginId}.dll");
             var pluginContext = new PluginLoadContext(pluginDirectory);
-            var pluginAssembly = pluginContext.LoadFromAssemblyName(new AssemblyName(pluginPath));
+            var pluginAssembly = pluginContext.LoadFromAssemblyPath(pluginPath);
             
             // Get IPlugin's Implementation
             var pluginTypes = pluginAssembly.GetTypes().Where(type => typeof(TImplementation).IsAssignableFrom(type));

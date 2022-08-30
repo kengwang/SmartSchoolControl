@@ -12,7 +12,8 @@ public class AuthenticationFilter : IRouteHandlerFilter
 {
     public async ValueTask<object?> InvokeAsync(RouteHandlerInvocationContext context, RouteHandlerFilterDelegate next)
     {
-        if (AdminLoginRepository.AdminLoginKeys!.GetValueOrDefault(
+        if (context.HttpContext.Session.GetString("LoginUserId") == null ||
+            AdminLoginRepository.AdminLoginKeys!.GetValueOrDefault(
                 context.HttpContext.Session.GetString("LoginUserId")) !=
             context.HttpContext.Session.GetString("LoginUserKey"))
         {

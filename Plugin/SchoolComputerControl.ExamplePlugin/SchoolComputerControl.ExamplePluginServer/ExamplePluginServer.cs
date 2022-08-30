@@ -76,13 +76,13 @@ public class ExamplePluginServer : IServerPluginBase
     };
 
 
-    public async Task HandleEvent(string eventId, string param)
+    public Task HandleEvent(string eventId, string param)
     {
-        // Nothing
+        return Task.CompletedTask;
     }
 
     public void UseServerPlugin(WebApplication app)
     {
-        throw new NotImplementedException();
+        app.MapGet(string.Concat("/plugin/", Id, "/hello"), () => $"Hello From {Id}");
     }
 }

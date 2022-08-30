@@ -1,6 +1,8 @@
-﻿namespace SchoolComputerControl.CommunicationPackages.Requests;
+﻿using System.Text.Json.Serialization;
+
+namespace SchoolComputerControl.CommunicationPackages.Requests;
 
 public class ClientRegisterRequest
 {
-    public string Name { get; set; } = null!;
+    [JsonPropertyName("name")] public string Name { get; set; } = default!;
 }

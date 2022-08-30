@@ -1,8 +1,10 @@
-﻿namespace SchoolComputerControl.CommunicationPackages.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace SchoolComputerControl.CommunicationPackages.Models;
 
 public class ClientPluginAction
 {
-    public string Id { get; set; } = null!;
-    public string ActionName { get; set; } = null!;
-    public string? ActionParameter { get; set; }
+    [JsonPropertyName("id")] public string Id { get; set; } = default!;
+    [JsonPropertyName("actionName")] public string ActionName { get; set; } = default!;
+    [JsonPropertyName("actionParameter")] public string? ActionParameter { get; set; }
 }

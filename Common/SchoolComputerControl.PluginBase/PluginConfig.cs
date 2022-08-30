@@ -1,10 +1,16 @@
-﻿namespace SchoolComputerControl.PluginBase;
+﻿using System.Text.Json.Serialization;
 
+namespace SchoolComputerControl.PluginBase;
+
+[JsonDerivedType(typeof(PluginConfig<string>),"string")]
+[JsonDerivedType(typeof(PluginConfig<bool>),"bool")]
+[JsonDerivedType(typeof(PluginConfig<int>),"number")]
+[JsonDerivedType(typeof(PluginConfig<DateTime>),"datetime")]
 public class PluginConfig
 {
-    public string Id { get; set; } = null!;
-    public string Name { get; set; } = null!;
-    public string Description { get; set; } = null!;
+    public string Id { get; set; } = default!;
+    public string Name { get; set; } = default!;
+    public string Description { get; set; } = default!;
     public PluginConfigAccessibility ServerAccessibility { get; set; } = PluginConfigAccessibility.Invisible;
     public PluginConfigAccessibility ClientAccessibility { get; set; } = PluginConfigAccessibility.Invisible;
     public PluginConfigType Type { get; set; }

@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System.Reflection;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using SchoolComputerControl.Server.Interfaces;
 
@@ -10,6 +11,7 @@ public class FluentValidationEndpoint : IEndpoint
     {
         builder.Services.AddFluentValidationAutoValidation();
         builder.Services.AddFluentValidationClientsideAdapters();
+        builder.Services.AddValidatorsFromAssemblyContaining<FluentValidationEndpoint>(ServiceLifetime.Singleton);
     }
 
     public void ConfigureApp(WebApplication app)
@@ -30,7 +32,7 @@ public class ValidationFilter<T> : IRouteHandlerFilter where T : class
     public async ValueTask<object?> InvokeAsync(RouteHandlerInvocationContext context, RouteHandlerFilterDelegate next)
     {
         if (context.Arguments.FirstOrDefault(t => t?.GetType() == typeof(T)) is not T validatableObject)
-            return BetterResults.Error("错误的请求");
+            return BetterResults.Error("错误的请求数据");
         var validationResult = await _validator.ValidateAsync(validatableObject);
         if (!validationResult.IsValid)
         {

@@ -21,18 +21,20 @@ public class HashServiceEndpoint : IEndpoint
 
 public interface IEasyHasher<THasher> where THasher : IHash, new()
 {
-    public string GetHashedString(string original);
+    public string GetHashedString(string original, bool lowerCase = true);
 }
 
 public class EasyHasher<THasher> : IEasyHasher<THasher> where THasher : IHash, new()
 {
     private THasher? _hasherCache;
     private THasher Hasher => _hasherCache ??= new THasher();
-    
-    public string GetHashedString(string original)
+
+    public string GetHashedString(string original, bool lowerCase = true)
     {
-        var result = Span<byte>.Empty;
+        var result = new Span<byte>(new byte[Hasher.Length]);
         Hasher.UpdateFinal(Encoding.UTF8.GetBytes(original), result);
-        return Encoding.UTF8.GetString(result);
+        if (lowerCase)
+            return BitConverter.ToString(result.ToArray()).Replace("-",string.Empty).ToLower();
+        return BitConverter.ToString(result.ToArray()).Replace("-",string.Empty);
     }
 }

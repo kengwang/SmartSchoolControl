@@ -1,5 +1,6 @@
 ﻿using SchoolComputerControl.Server.Interfaces;
 using Serilog;
+using Serilog.Events;
 
 namespace SchoolComputerControl.Server.Endpoints.ConfigurationEndpoints;
 
