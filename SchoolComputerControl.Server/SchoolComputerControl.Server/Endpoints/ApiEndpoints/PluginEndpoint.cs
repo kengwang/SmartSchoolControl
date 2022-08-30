@@ -14,9 +14,9 @@ public class PluginEndpoint : IEndpoint
 
     public void ConfigureApp(WebApplication app)
     {
-        app.MapGet("/plugin/client", GetPluginsClient);
-        app.MapGet("/plugin/client/{id}", GetPluginClient);
-        app.MapGet("/plugin/client/{id}/download", PluginClientDownload);
+        app.MapGet("/plugins", GetPluginsClient);
+        app.MapGet("/plugin/{id}", GetPluginClient);
+        app.MapGet("/plugin/{id}/client/download", PluginClientDownload);
     }
 
     private IResult PluginClientDownload(
