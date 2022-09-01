@@ -2,7 +2,6 @@
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SchoolComputerControl.Infrastructure.Models;
 using SchoolComputerControl.Infrastructure.Models.DbModels;
 using SchoolComputerControl.PluginBase;
 using SchoolComputerControl.Server.Interfaces;
@@ -30,7 +29,7 @@ public class ServerDbContext : DbContext
 {
     public DbSet<Admin> Admins { get; set; } = default!;
     public DbSet<Client> Clients { get; set; } = default!;
-    public DbSet<ClientAction> ClientActions { get; set; } = default!;
+    public DbSet<ClientAction> Actions { get; set; } = default!;
 
     public ServerDbContext(DbContextOptions<ServerDbContext> options) : base(options)
     {
@@ -58,5 +57,15 @@ public class ServerDbContext : DbContext
         modelBuilder.Entity<Client>()
             .Property(client => client.Configs)
             .HasConversion(clientConfigJsonConverter);
+
+        var clientActionsConverter = new ValueConverter<Dictionary<string, Dictionary<string, string>>, string>(
+            model => JsonSerializer.Serialize(model,
+                ClientActionSerializeContext.Default.DictionaryStringDictionaryStringString),
+            dbString => JsonSerializer.Deserialize(dbString,
+                ClientActionSerializeContext.Default.DictionaryStringDictionaryStringString)!
+        );
+        modelBuilder.Entity<ClientAction>()
+            .Property(action => action.Actions)
+            .HasConversion(clientActionsConverter);
     }
 }

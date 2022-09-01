@@ -24,8 +24,8 @@ public class ClientConfigsEndpoint : IEndpoint
         app.MapGet("/client/{clientId:guid}/configs", GetClientConfig);
         app.MapGet("/client/{clientId:guid}/configs/server", GetClientConfigServer)
             .AddRouteHandlerFilter<AuthenticationFilter>();
-        app.MapPost("/client/{clientId:guid}/configs", PostClientConfigSync);
-        app.MapPost("/client/{clientId:guid}/configs/server", PostClientConfig)
+        app.MapPut("/client/{clientId:guid}/configs", PostClientConfigSync);
+        app.MapPut("/client/{clientId:guid}/configs/server", PostClientConfig)
             .AddRouteHandlerFilter<AuthenticationFilter>();
     }
 

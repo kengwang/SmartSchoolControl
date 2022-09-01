@@ -6,6 +6,6 @@ public interface IPluginBase
     public PluginInfo PluginInfo { get; }
     public int ApiVersion { get; }
     public List<PluginConfig> Configs { get; }
-    public List<PluginEvent> Events { get; }
+    public List<PluginAction> Actions { get; }
     public Task HandleEvent(string eventId, string param);
 }

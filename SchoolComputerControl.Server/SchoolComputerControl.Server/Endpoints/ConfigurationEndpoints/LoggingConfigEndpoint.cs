@@ -13,6 +13,7 @@ public class LoggingConfigEndpoint : IEndpoint
             .WriteTo.Console()
             .CreateLogger();
         builder.Logging.ClearProviders();
+        builder.Logging.AddEventSourceLogger();
         builder.Logging.AddSerilog();
     }
 

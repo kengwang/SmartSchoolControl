@@ -78,11 +78,11 @@ public class ExamplePluginServer : IServerPluginBase
         }
     };
 
-    public List<PluginEvent> Events => new()
+    public List<PluginAction> Actions => new()
     {
         new()
         {
-            EventId = "ConsoleLog",
+            ActionId = "ConsoleLog",
             Name = "控制台输出",
             Description = "输出内容到控制台",
             DefaultValue = "Nothing",

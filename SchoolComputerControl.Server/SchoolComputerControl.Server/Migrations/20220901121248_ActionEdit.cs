@@ -5,10 +5,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SchoolComputerControl.Server.Migrations
 {
-    public partial class _202209011719 : Migration
+    public partial class ActionEdit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Actions",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    StartDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EndDateTime = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Actions", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Admins",
                 columns: table => new
@@ -25,19 +38,6 @@ namespace SchoolComputerControl.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ClientActions",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    StartDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    EndDateTime = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClientActions", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ClientPluginAction",
                 columns: table => new
                 {
@@ -50,9 +50,9 @@ namespace SchoolComputerControl.Server.Migrations
                 {
                     table.PrimaryKey("PK_ClientPluginAction", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ClientPluginAction_ClientActions_ClientActionId",
+                        name: "FK_ClientPluginAction_Actions_ClientActionId",
                         column: x => x.ClientActionId,
-                        principalTable: "ClientActions",
+                        principalTable: "Actions",
                         principalColumn: "Id");
                 });
 
@@ -71,9 +71,9 @@ namespace SchoolComputerControl.Server.Migrations
                 {
                     table.PrimaryKey("PK_Clients", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Clients_ClientActions_ClientActionId",
+                        name: "FK_Clients_Actions_ClientActionId",
                         column: x => x.ClientActionId,
-                        principalTable: "ClientActions",
+                        principalTable: "Actions",
                         principalColumn: "Id");
                 });
 
@@ -100,7 +100,7 @@ namespace SchoolComputerControl.Server.Migrations
                 name: "Clients");
 
             migrationBuilder.DropTable(
-                name: "ClientActions");
+                name: "Actions");
         }
     }
 }

@@ -8,5 +8,5 @@ public class ClientAction
     public List<Client> Clients { get; set; } = default!;
     public DateTime StartDateTime { get; set; }
     public DateTime EndDateTime { get; set; }
-    public List<ClientPluginAction> Actions { get; set; } = default!;
+    public Dictionary<string,Dictionary<string,string>> Actions { get; set; } = default!;
 }

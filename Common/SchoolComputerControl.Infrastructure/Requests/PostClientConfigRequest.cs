@@ -6,6 +6,5 @@ namespace SchoolComputerControl.Infrastructure.Requests;
 
 public class PostClientConfigRequest
 {
-    [JsonPropertyName("configs")]
     public List<ClientConfig> Configs { get; set; } = default!;
 }

@@ -11,8 +11,8 @@ using SchoolComputerControl.Server.Endpoints.ConfigurationEndpoints;
 namespace SchoolComputerControl.Server.Migrations
 {
     [DbContext(typeof(ServerDbContext))]
-    [Migration("20220901091908_202209011719")]
-    partial class _202209011719
+    [Migration("20220901171202_AddAction")]
+    partial class AddAction
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,6 +82,10 @@ namespace SchoolComputerControl.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Actions")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("EndDateTime")
                         .HasColumnType("TEXT");
 
@@ -90,29 +94,7 @@ namespace SchoolComputerControl.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ClientActions");
-                });
-
-            modelBuilder.Entity("SchoolComputerControl.Infrastructure.Requests.ClientPluginAction", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ActionName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ActionParameter")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("ClientActionId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientActionId");
-
-                    b.ToTable("ClientPluginAction");
+                    b.ToTable("Actions");
                 });
 
             modelBuilder.Entity("SchoolComputerControl.Infrastructure.Models.DbModels.Client", b =>
@@ -122,17 +104,8 @@ namespace SchoolComputerControl.Server.Migrations
                         .HasForeignKey("ClientActionId");
                 });
 
-            modelBuilder.Entity("SchoolComputerControl.Infrastructure.Requests.ClientPluginAction", b =>
-                {
-                    b.HasOne("SchoolComputerControl.Infrastructure.Models.DbModels.ClientAction", null)
-                        .WithMany("Actions")
-                        .HasForeignKey("ClientActionId");
-                });
-
             modelBuilder.Entity("SchoolComputerControl.Infrastructure.Models.DbModels.ClientAction", b =>
                 {
-                    b.Navigation("Actions");
-
                     b.Navigation("Clients");
                 });
 #pragma warning restore 612, 618

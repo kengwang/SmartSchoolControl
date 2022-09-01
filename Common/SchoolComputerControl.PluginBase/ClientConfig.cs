@@ -10,10 +10,10 @@ namespace SchoolComputerControl.PluginBase;
 [JsonDerivedType(typeof(ClientConfig<DateTime>), "datetime")]
 public class ClientConfig
 {
-    [JsonPropertyName("configId")] public string ConfigId { get; set; } = default!;
+    public string ConfigId { get; set; } = default!;
 }
 
 public class ClientConfig<TValue> : ClientConfig
 {
-    [JsonPropertyName("value")] public TValue Value { get; set; } = default!;
+    public TValue Value { get; set; } = default!;
 }

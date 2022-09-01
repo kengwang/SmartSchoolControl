@@ -19,7 +19,7 @@ public class ClientEndpoint : IEndpoint
 
     public void ConfigureApp(WebApplication app)
     {
-        app.MapPut("/client", ClientRegister)
+        app.MapPost("/client", ClientRegister)
             .AddFluentValidationFilter<ClientRegisterRequest>();
         
         app.MapGet("/client/{clientId:guid}", GetClientById);

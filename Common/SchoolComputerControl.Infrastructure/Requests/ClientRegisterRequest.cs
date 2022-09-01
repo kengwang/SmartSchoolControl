@@ -4,5 +4,5 @@ namespace SchoolComputerControl.Infrastructure.Requests;
 
 public class ClientRegisterRequest
 {
-    [JsonPropertyName("name")] public string Name { get; set; } = default!;
+    public string Name { get; set; } = default!;
 }

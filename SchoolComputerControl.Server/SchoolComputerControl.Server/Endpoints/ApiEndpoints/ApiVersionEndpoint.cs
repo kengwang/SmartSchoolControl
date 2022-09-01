@@ -12,6 +12,11 @@ public class ApiVersionEndpoint : IEndpoint
 
     public void ConfigureApp(WebApplication app)
     {
-        app.MapGet("/version", () => Assembly.GetExecutingAssembly().GetName().Version?.ToString());
+        app.MapGet("/version", GetVersion);
+    }
+
+    private static string? GetVersion()
+    {
+        return Assembly.GetExecutingAssembly().GetName().Version?.ToString();
     }
 }

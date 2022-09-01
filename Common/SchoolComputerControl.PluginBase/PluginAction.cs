@@ -1,8 +1,8 @@
 ﻿namespace SchoolComputerControl.PluginBase;
 
-public class PluginEvent
+public class PluginAction
 {
-    public string EventId { get; set; } = default!;
+    public string ActionId { get; set; } = default!;
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
     public string DefaultValue { get; set; } = default!;

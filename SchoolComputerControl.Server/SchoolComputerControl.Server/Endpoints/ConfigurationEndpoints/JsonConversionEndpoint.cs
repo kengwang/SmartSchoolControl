@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
 using SchoolComputerControl.Infrastructure.Models;
 using SchoolComputerControl.PluginBase;
@@ -14,6 +15,7 @@ public class JsonConversionEndpoint : IEndpoint
         builder.Services.Configure<JsonOptions>(option =>
         {
             option.SerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
+            option.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
         });
     }
 
@@ -31,6 +33,12 @@ public partial class ClientConfigJsonSerializeContext : JsonSerializerContext
 
 [JsonSerializable(typeof(List<string>), GenerationMode = JsonSourceGenerationMode.Default)]
 public partial class ListStringJsonSerializeContext : JsonSerializerContext
+{
+    
+}
+
+[JsonSerializable(typeof(Dictionary<string,Dictionary<string,string>>),GenerationMode = JsonSourceGenerationMode.Default)]
+public partial class ClientActionSerializeContext : JsonSerializerContext
 {
     
 }

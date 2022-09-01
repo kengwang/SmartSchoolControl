@@ -4,7 +4,7 @@ namespace SchoolComputerControl.Infrastructure.Requests;
 
 public class ClientPluginAction
 {
-    [JsonPropertyName("id")] public string Id { get; set; } = default!;
-    [JsonPropertyName("actionName")] public string ActionName { get; set; } = default!;
-    [JsonPropertyName("actionParameter")] public string? ActionParameter { get; set; }
+    public string Id { get; set; } = default!;
+    public string ActionName { get; set; } = default!;
+    public string? ActionParameter { get; set; }
 }
