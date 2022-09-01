@@ -1,6 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
-using SchoolComputerControl.CommunicationPackages.Models;
+using SchoolComputerControl.Infrastructure.Models;
+using SchoolComputerControl.PluginBase;
 using SchoolComputerControl.Server.Interfaces;
 
 namespace SchoolComputerControl.Server.Endpoints.ConfigurationEndpoints;
@@ -22,8 +23,8 @@ public class JsonConversionEndpoint : IEndpoint
     }
 }
 
-[JsonSerializable(typeof(List<ClientConfig>), GenerationMode = JsonSourceGenerationMode.Default)]
-public partial class ListClientConfigJsonSerializeContext : JsonSerializerContext
+[JsonSerializable(typeof(Dictionary<string,List<ClientConfig>>), GenerationMode = JsonSourceGenerationMode.Default)]
+public partial class ClientConfigJsonSerializeContext : JsonSerializerContext
 {
 
 }

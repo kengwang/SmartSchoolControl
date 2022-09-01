@@ -2,10 +2,10 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SchoolComputerControl.CommunicationPackages.Requests;
+using SchoolComputerControl.Infrastructure.Models.DbModels;
+using SchoolComputerControl.Infrastructure.Requests;
 using SchoolComputerControl.Server.Endpoints.ConfigurationEndpoints;
 using SchoolComputerControl.Server.Interfaces;
-using SchoolComputerControl.Server.Models.DbModels;
 
 namespace SchoolComputerControl.Server.Endpoints.ApiEndpoints;
 
@@ -18,10 +18,13 @@ public class AdminEndpoint : IEndpoint
 
     public void ConfigureApp(WebApplication app)
     {
-        app.MapPost("/admin/login", AdminLogin).AddRouteHandlerFilter<ValidationFilter<AdminLoginRequest>>();
+        app.MapPost("/admin/login", AdminLogin)
+            .AddFluentValidationFilter<AdminLoginRequest>();
+
         app.MapPost("/admin/register", AdminRegister)
             .AddRouteHandlerFilter<AuthenticationFilter>()
-            .AddRouteHandlerFilter<ValidationFilter<AdminRegisterRequest>>();
+            .AddFluentValidationFilter<AdminRegisterRequest>();
+
         app.MapGet("/admin/{adminId:guid}", GetAdmin);
     }
 
@@ -38,6 +41,10 @@ public class AdminEndpoint : IEndpoint
         [FromServices] ServerDbContext dbContext,
         [FromBody] AdminRegisterRequest request)
     {
+        if (dbContext.Admins.Any(t => t.UserName == request.UserName))
+        {
+            return BetterResults.Error("用户名已存在");
+        }
         var admin = new Admin
         {
             Id = Guid.NewGuid(),
@@ -57,9 +64,21 @@ public class AdminEndpoint : IEndpoint
         [FromBody] AdminLoginRequest adminLoginRequest,
         HttpContext context)
     {
+#if DEBUG
+        await Task.Delay(0);
+        var admin = new Admin
+        {
+            Id = Guid.Empty,
+            UserName = "admin",
+            Password = "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92", // SHA-256: 123456
+            Email = "atkengwang@qq.com",
+            Enable = true
+        };
+#else
         if (await dbContext.Admins.FirstOrDefaultAsync(a =>
                 a.UserName == adminLoginRequest.UserName || a.Email == adminLoginRequest.UserName) is not { } admin)
             return BetterResults.NotFound("用户不存在");
+#endif
         if (hasher.GetHashedString(adminLoginRequest.Password) != admin.Password)
             return BetterResults.Error("密码错误", StatusCodes.Status401Unauthorized);
         if (!admin.Enable)

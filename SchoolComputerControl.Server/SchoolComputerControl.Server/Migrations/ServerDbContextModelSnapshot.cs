@@ -17,29 +17,7 @@ namespace SchoolComputerControl.Server.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.8");
 
-            modelBuilder.Entity("SchoolComputerControl.CommunicationPackages.Models.ClientPluginAction", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ActionName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ActionParameter")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("ClientActionId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientActionId");
-
-                    b.ToTable("ClientPluginAction");
-                });
-
-            modelBuilder.Entity("SchoolComputerControl.Server.Models.DbModels.Admin", b =>
+            modelBuilder.Entity("SchoolComputerControl.Infrastructure.Models.DbModels.Admin", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,7 +43,7 @@ namespace SchoolComputerControl.Server.Migrations
                     b.ToTable("Admins");
                 });
 
-            modelBuilder.Entity("SchoolComputerControl.Server.Models.DbModels.Client", b =>
+            modelBuilder.Entity("SchoolComputerControl.Infrastructure.Models.DbModels.Client", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,7 +74,7 @@ namespace SchoolComputerControl.Server.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("SchoolComputerControl.Server.Models.DbModels.ClientAction", b =>
+            modelBuilder.Entity("SchoolComputerControl.Infrastructure.Models.DbModels.ClientAction", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,21 +91,43 @@ namespace SchoolComputerControl.Server.Migrations
                     b.ToTable("ClientActions");
                 });
 
-            modelBuilder.Entity("SchoolComputerControl.CommunicationPackages.Models.ClientPluginAction", b =>
+            modelBuilder.Entity("SchoolComputerControl.Infrastructure.Requests.ClientPluginAction", b =>
                 {
-                    b.HasOne("SchoolComputerControl.Server.Models.DbModels.ClientAction", null)
-                        .WithMany("Actions")
-                        .HasForeignKey("ClientActionId");
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ActionName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ActionParameter")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("ClientActionId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientActionId");
+
+                    b.ToTable("ClientPluginAction");
                 });
 
-            modelBuilder.Entity("SchoolComputerControl.Server.Models.DbModels.Client", b =>
+            modelBuilder.Entity("SchoolComputerControl.Infrastructure.Models.DbModels.Client", b =>
                 {
-                    b.HasOne("SchoolComputerControl.Server.Models.DbModels.ClientAction", null)
+                    b.HasOne("SchoolComputerControl.Infrastructure.Models.DbModels.ClientAction", null)
                         .WithMany("Clients")
                         .HasForeignKey("ClientActionId");
                 });
 
-            modelBuilder.Entity("SchoolComputerControl.Server.Models.DbModels.ClientAction", b =>
+            modelBuilder.Entity("SchoolComputerControl.Infrastructure.Requests.ClientPluginAction", b =>
+                {
+                    b.HasOne("SchoolComputerControl.Infrastructure.Models.DbModels.ClientAction", null)
+                        .WithMany("Actions")
+                        .HasForeignKey("ClientActionId");
+                });
+
+            modelBuilder.Entity("SchoolComputerControl.Infrastructure.Models.DbModels.ClientAction", b =>
                 {
                     b.Navigation("Actions");
 

@@ -5,21 +5,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SchoolComputerControl.Server.Migrations
 {
-    public partial class AddClientActions : Migration
+    public partial class _202209011719 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ClientPluginAction",
+                name: "Admins",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    ActionName = table.Column<string>(type: "TEXT", nullable: false),
-                    ActionParameter = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UserName = table.Column<string>(type: "TEXT", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Enable = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientPluginAction", x => x.Id);
+                    table.PrimaryKey("PK_Admins", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -27,15 +29,30 @@ namespace SchoolComputerControl.Server.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ActionId = table.Column<string>(type: "TEXT", nullable: true)
+                    StartDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EndDateTime = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClientActions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ClientPluginAction",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    ActionName = table.Column<string>(type: "TEXT", nullable: false),
+                    ActionParameter = table.Column<string>(type: "TEXT", nullable: true),
+                    ClientActionId = table.Column<Guid>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClientPluginAction", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ClientActions_ClientPluginAction_ActionId",
-                        column: x => x.ActionId,
-                        principalTable: "ClientPluginAction",
+                        name: "FK_ClientPluginAction_ClientActions_ClientActionId",
+                        column: x => x.ClientActionId,
+                        principalTable: "ClientActions",
                         principalColumn: "Id");
                 });
 
@@ -47,6 +64,7 @@ namespace SchoolComputerControl.Server.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     LastHeartBeat = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Tags = table.Column<string>(type: "TEXT", nullable: false),
+                    Configs = table.Column<string>(type: "TEXT", nullable: false),
                     ClientActionId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
@@ -60,9 +78,9 @@ namespace SchoolComputerControl.Server.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientActions_ActionId",
-                table: "ClientActions",
-                column: "ActionId");
+                name: "IX_ClientPluginAction_ClientActionId",
+                table: "ClientPluginAction",
+                column: "ClientActionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clients_ClientActionId",
@@ -73,13 +91,16 @@ namespace SchoolComputerControl.Server.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Admins");
+
+            migrationBuilder.DropTable(
+                name: "ClientPluginAction");
+
+            migrationBuilder.DropTable(
                 name: "Clients");
 
             migrationBuilder.DropTable(
                 name: "ClientActions");
-
-            migrationBuilder.DropTable(
-                name: "ClientPluginAction");
         }
     }
 }

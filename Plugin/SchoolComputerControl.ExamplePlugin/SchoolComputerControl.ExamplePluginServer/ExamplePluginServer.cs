@@ -20,51 +20,67 @@ public class ExamplePluginServer : IServerPluginBase
 
     public List<PluginConfig> Configs => new()
     {
-        new PluginConfig<string>
+        new PluginConfig()
         {
-            Id = "E00D0E9B-9CC4-451E-BA25-535EDEEF2AA8",
+            ConfigId = "textConfig",
             Name = "文本配置项",
             Description = "一个文本类型配置项",
             ServerAccessibility = PluginConfigAccessibility.Editable,
             ClientAccessibility = PluginConfigAccessibility.Visible,
             Type = PluginConfigType.Text,
-            Value = "默认值"
+            DefaultConfig = new ClientConfig<string>
+            {
+                ConfigId = "textConfig",
+                Value = "defaultValue"
+            }
         },
-        new PluginConfig<bool>
+        new PluginConfig()
         {
-            Id = "93D5F656-E0B5-4220-9777-55D86C98D5F2",
+            ConfigId = "boolConfig",
             Name = "布尔配置项",
             Description = "一个布尔类型的配置项, 不可触动",
             ServerAccessibility = PluginConfigAccessibility.Visible,
             ClientAccessibility = PluginConfigAccessibility.Editable,
             Type = PluginConfigType.Boolean,
-            Value = false
+            DefaultConfig = new ClientConfig<bool>
+            {
+                ConfigId = "boolConfig",
+                Value = false
+            }
         },
-        new PluginConfig<int>()
+        new PluginConfig()
         {
-            Id = "089D6800-DA6E-4D20-814D-154303AB0C15",
+            ConfigId = "intConfig",
             Name = "数值类型项",
             Description = "一个数值类型项",
             ServerAccessibility = PluginConfigAccessibility.Editable,
             ClientAccessibility = PluginConfigAccessibility.Invisible,
             Type = PluginConfigType.Number,
-            Value = 69
+            DefaultConfig = new ClientConfig<int>
+            {
+                ConfigId = "intConfig",
+                Value = 9000
+            }
         },
-        new PluginConfig<DateTime>
+        new PluginConfig()
         {
-            Id = "AF9D34D8-526A-46ED-B17D-5F2C7225ED88",
+            ConfigId = "dateTimeConfig",
             Name = "时间型配置项",
             Description = "懒得写了",
             ServerAccessibility = PluginConfigAccessibility.Editable,
             ClientAccessibility = PluginConfigAccessibility.Editable,
             Type = PluginConfigType.DateTime,
-            Value = DateTime.Today
+            DefaultConfig = new ClientConfig<DateTime>
+            {
+                ConfigId = "dateTimeConfig",
+                Value = DateTime.Today
+            }
         }
     };
 
     public List<PluginEvent> Events => new()
     {
-        new PluginEvent
+        new()
         {
             EventId = "ConsoleLog",
             Name = "控制台输出",

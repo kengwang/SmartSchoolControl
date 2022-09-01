@@ -1,4 +1,4 @@
-﻿namespace SchoolComputerControl.Server.Models.DbModels;
+﻿namespace SchoolComputerControl.Infrastructure.Models.DbModels;
 
 public class Admin
 {

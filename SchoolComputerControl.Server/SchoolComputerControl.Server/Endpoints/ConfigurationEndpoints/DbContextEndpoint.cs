@@ -2,9 +2,10 @@
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SchoolComputerControl.CommunicationPackages.Models;
+using SchoolComputerControl.Infrastructure.Models;
+using SchoolComputerControl.Infrastructure.Models.DbModels;
+using SchoolComputerControl.PluginBase;
 using SchoolComputerControl.Server.Interfaces;
-using SchoolComputerControl.Server.Models.DbModels;
 
 namespace SchoolComputerControl.Server.Endpoints.ConfigurationEndpoints;
 
@@ -48,10 +49,10 @@ public class ServerDbContext : DbContext
             .Property(client => client.Tags)
             .HasConversion(splitStringConverter);
 
-        var clientConfigJsonConverter = new ValueConverter<List<ClientConfig>, string>(
-            model => JsonSerializer.Serialize(model, ListClientConfigJsonSerializeContext.Default.ListClientConfig),
+        var clientConfigJsonConverter = new ValueConverter<Dictionary<string,List<ClientConfig>>, string>(
+            model => JsonSerializer.Serialize(model, ClientConfigJsonSerializeContext.Default.DictionaryStringListClientConfig),
             dataString =>
-                JsonSerializer.Deserialize(dataString, ListClientConfigJsonSerializeContext.Default.ListClientConfig)!
+                JsonSerializer.Deserialize(dataString, ClientConfigJsonSerializeContext.Default.DictionaryStringListClientConfig)!
         );
 
         modelBuilder.Entity<Client>()

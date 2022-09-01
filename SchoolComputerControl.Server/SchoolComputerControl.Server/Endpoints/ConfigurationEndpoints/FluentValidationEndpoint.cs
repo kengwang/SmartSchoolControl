@@ -20,6 +20,14 @@ public class FluentValidationEndpoint : IEndpoint
     }
 }
 
+public static class ValidationFilterExtension
+{
+    public static RouteHandlerBuilder AddFluentValidationFilter<T>(this RouteHandlerBuilder builder) where T : class
+    {
+        return builder.AddRouteHandlerFilter<ValidationFilter<T>>();
+    }
+}
+
 public class ValidationFilter<T> : IRouteHandlerFilter where T : class
 {
     private readonly IValidator<T> _validator;

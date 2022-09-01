@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace SchoolComputerControl.CommunicationPackages.Requests;
+namespace SchoolComputerControl.Infrastructure.Requests;
 
 public class AdminLoginRequest
 {

@@ -1,7 +1,8 @@
 ﻿using System.Text.Json.Serialization;
-using SchoolComputerControl.CommunicationPackages.Models;
+using SchoolComputerControl.Infrastructure.Models;
+using SchoolComputerControl.PluginBase;
 
-namespace SchoolComputerControl.CommunicationPackages.Requests;
+namespace SchoolComputerControl.Infrastructure.Requests;
 
 public class PostClientConfigRequest
 {

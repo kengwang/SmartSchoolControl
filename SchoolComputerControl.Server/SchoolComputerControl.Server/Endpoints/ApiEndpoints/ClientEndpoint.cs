@@ -1,11 +1,12 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SchoolComputerControl.CommunicationPackages.Models;
-using SchoolComputerControl.CommunicationPackages.Requests;
+using SchoolComputerControl.Infrastructure.Models;
+using SchoolComputerControl.Infrastructure.Models.DbModels;
+using SchoolComputerControl.Infrastructure.Requests;
+using SchoolComputerControl.PluginBase;
 using SchoolComputerControl.Server.Endpoints.ConfigurationEndpoints;
 using SchoolComputerControl.Server.Interfaces;
-using SchoolComputerControl.Server.Models.DbModels;
 
 namespace SchoolComputerControl.Server.Endpoints.ApiEndpoints;
 
@@ -13,14 +14,16 @@ public class ClientEndpoint : IEndpoint
 {
     public void ConfigureBuilder(WebApplicationBuilder builder)
     {
-        builder.Services.AddSingleton<IValidator<ClientRegisterRequest>, ClientRegisterValidation>();
+        // Nothing
     }
 
     public void ConfigureApp(WebApplication app)
     {
-        app.MapPost("/client", ClientRegister)
-            .AddRouteHandlerFilter<ValidationFilter<ClientRegisterRequest>>();
+        app.MapPut("/client", ClientRegister)
+            .AddFluentValidationFilter<ClientRegisterRequest>();
+        
         app.MapGet("/client/{clientId:guid}", GetClientById);
+        
         app.MapGet("/clients", GetClients);
 
     }
@@ -53,7 +56,7 @@ public class ClientEndpoint : IEndpoint
             Name = request.Name,
             LastHeartBeat = DateTime.Now,
             Tags = new List<string>() { request.Name },
-            Configs = new List<ClientConfig>()
+            Configs = new Dictionary<string,List<ClientConfig>>()
         };
         await dbContext.Clients.AddAsync(client);
         await dbContext.SaveChangesAsync();

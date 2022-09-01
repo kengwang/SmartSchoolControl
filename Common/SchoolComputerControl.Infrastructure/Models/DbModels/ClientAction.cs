@@ -1,6 +1,6 @@
-﻿using SchoolComputerControl.CommunicationPackages.Models;
+﻿using SchoolComputerControl.Infrastructure.Requests;
 
-namespace SchoolComputerControl.Server.Models.DbModels;
+namespace SchoolComputerControl.Infrastructure.Models.DbModels;
 
 public class ClientAction
 {

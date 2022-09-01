@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.Server", "SchoolComputerControl.Server\SchoolComputerControl.Server.csproj", "{6A29BF79-17A3-4A9E-848E-A462E9A0839E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.CommunicationPackages", "..\Common\SchoolComputerControl.CommunicationPackages\SchoolComputerControl.CommunicationPackages.csproj", "{8433D362-B471-42BF-A9E7-6D2CE02EFAE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.Infrastructure", "..\Common\SchoolComputerControl.Infrastructure\SchoolComputerControl.Infrastructure.csproj", "{8433D362-B471-42BF-A9E7-6D2CE02EFAE5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolComputerControl.PluginManager", "..\Common\SchoolComputerControl.PluginManager\SchoolComputerControl.PluginManager.csproj", "{630A4C79-80FB-44C3-96DC-6EB28E066943}"
 EndProject
