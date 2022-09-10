@@ -9,7 +9,8 @@ public class LoggingConfigEndpoint : IEndpoint
     public void ConfigureBuilder(WebApplicationBuilder builder)
     {
         Log.Logger = new LoggerConfiguration()
-            .WriteTo.File($"{Environment.CurrentDirectory}/log/log.log", rollingInterval: RollingInterval.Day)
+            .WriteTo.File($"{Environment.CurrentDirectory}/log/log.log",
+                rollingInterval: RollingInterval.Day)
             .WriteTo.Console()
             .CreateLogger();
         builder.Logging.ClearProviders();
@@ -19,6 +20,6 @@ public class LoggingConfigEndpoint : IEndpoint
 
     public void ConfigureApp(WebApplication app)
     {
-        
+        // Nothing
     }
 }

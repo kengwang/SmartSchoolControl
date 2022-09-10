@@ -1,12 +1,15 @@
 ﻿using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using SchoolComputerControl.Client.Extensions;
+using SchoolComputerControl.Client.Interfaces;
+using SchoolComputerControl.Client.Services;
 using SchoolComputerControl.ClientPluginBase;
 using SchoolComputerControl.PluginManager;
 
@@ -23,6 +26,8 @@ namespace SchoolComputerControl.Client
         /// </summary>
         public new static App Current => (App)Application.Current;
 
+        public static IHost? AppHost;
+
         /// <summary>
         /// Gets the <see cref="IServiceProvider"/> instance to resolve application services.
         /// </summary>
@@ -34,8 +39,8 @@ namespace SchoolComputerControl.Client
             var builder = Host.CreateDefaultBuilder();
             builder.ConfigureServices(ConfigureServices);
             builder.ConfigureLogging(ConfigureLogging);
-            var app = builder.Build();
-            Services = app.Services;
+            AppHost = builder.Build();
+            Services = AppHost.Services;
         }
 
         private void ConfigureLogging(ILoggingBuilder loggingBuilder)
@@ -50,12 +55,17 @@ namespace SchoolComputerControl.Client
 
         private void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<IHttpRequester, HttpRequester>();
             services.AddPluginManager<IClientPluginBase>();
             services.AddPagesFromAssembly(Assembly.GetExecutingAssembly());
             services.AddViewModelFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddWindowsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddServicesFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddNotificationReceiverFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddHostedService<HeartBeatService>();
         }
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
             
@@ -65,6 +75,8 @@ namespace SchoolComputerControl.Client
             {
                 process.Kill(true);
             }
+
+            await AppHost.RunAsync();
         }
     }
 }

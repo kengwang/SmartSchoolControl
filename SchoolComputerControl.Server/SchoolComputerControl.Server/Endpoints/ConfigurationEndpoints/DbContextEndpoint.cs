@@ -29,10 +29,11 @@ public class ServerDbContext : DbContext
 {
     public DbSet<Admin> Admins { get; set; } = default!;
     public DbSet<Client> Clients { get; set; } = default!;
-    public DbSet<ClientAction> Actions { get; set; } = default!;
+    public DbSet<Schedule> Schedules { get; set; } = default!;
 
     public ServerDbContext(DbContextOptions<ServerDbContext> options) : base(options)
     {
+        
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -64,8 +65,16 @@ public class ServerDbContext : DbContext
             dbString => JsonSerializer.Deserialize(dbString,
                 ClientActionSerializeContext.Default.DictionaryStringDictionaryStringString)!
         );
-        modelBuilder.Entity<ClientAction>()
+        modelBuilder.Entity<Schedule>()
             .Property(action => action.Actions)
             .HasConversion(clientActionsConverter);
+
+        var listTriggersConverter = new ValueConverter<List<Trigger>, string>(
+            model => JsonSerializer.Serialize(model, ListTriggerSerializeContext.Default.ListTrigger),
+            dbString => JsonSerializer.Deserialize(dbString, ListTriggerSerializeContext.Default.ListTrigger)!
+        );
+        modelBuilder.Entity<Schedule>()
+            .Property(schedule => schedule.Triggers)
+            .HasConversion(listTriggersConverter);
     }
 }
