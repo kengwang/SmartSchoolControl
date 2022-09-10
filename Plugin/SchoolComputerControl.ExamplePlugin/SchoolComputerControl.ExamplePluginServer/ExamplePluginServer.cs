@@ -90,9 +90,10 @@ public class ExamplePluginServer : IServerPluginBase
             CanClientTrigger = false
         }
     };
+    
 
 
-    public Task HandleEvent(string eventId, string param)
+    public Task HandleEventAsync(string eventId, string param)
     {
         return Task.CompletedTask;
     }
