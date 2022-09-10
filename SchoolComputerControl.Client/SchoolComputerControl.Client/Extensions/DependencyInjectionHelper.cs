@@ -63,7 +63,7 @@ public static class DependencyInjectionHelper
             select (matchingInterface, type);
         foreach (var (matchingInterface, type) in scanner)
         {
-            services.AddSingleton(matchingInterface, type);
+            services.AddTransient(matchingInterface, type);
         }
     }
 }

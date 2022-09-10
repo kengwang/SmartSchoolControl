@@ -24,7 +24,7 @@ public class ScheduleEndpoint : IEndpoint
         app.MapGet("/schedule/all", GetSchedulesAll).AddRouteHandlerFilter<AuthenticationFilter>();
         app.MapGet("/actions/available", GetActionsAvailable).AddRouteHandlerFilter<AuthenticationFilter>();
         app.MapPost("/schedule", AddSchedule).AddRouteHandlerFilter<AuthenticationFilter>()
-            .AddFluentValidationFilter<Schedule>();
+            .AddFluentValidationFilter<ServerSchedule>();
         app.MapPut("/schedule/{scheduleId:guid}", UpdateSchedule).AddFluentValidationFilter<SchedulePostValidation>()
             .AddRouteHandlerFilter<AuthenticationFilter>();
     }
@@ -52,7 +52,7 @@ public class ScheduleEndpoint : IEndpoint
     private static async Task<IResult> AddSchedule([FromServices] ServerDbContext dbContext, SchedulePutRequest requestSchedule)
     {
         var clients = await dbContext.Clients.ToListAsync();
-        var schedule = new Schedule
+        var schedule = new ServerSchedule
         {
             Id = Guid.NewGuid(),
             Clients = requestSchedule.Clients.Select(id => clients.FirstOrDefault(client => client.Id == id)).OfType<Client>()

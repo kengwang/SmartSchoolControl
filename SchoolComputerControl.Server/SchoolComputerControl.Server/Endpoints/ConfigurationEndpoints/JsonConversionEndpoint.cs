@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
 using SchoolComputerControl.Infrastructure.Models;
 using SchoolComputerControl.Infrastructure.Models.DbModels;
+using SchoolComputerControl.Infrastructure.Models.DbModels.Base;
 using SchoolComputerControl.PluginBase;
 using SchoolComputerControl.Server.Interfaces;
 

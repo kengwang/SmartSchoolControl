@@ -55,12 +55,15 @@ namespace SchoolComputerControl.Client
 
         private void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ClientDbContext>();
             services.AddHttpClient<IHttpRequester, HttpRequester>();
             services.AddPluginManager<IClientPluginBase>();
             services.AddPagesFromAssembly(Assembly.GetExecutingAssembly());
             services.AddViewModelFromAssembly(Assembly.GetExecutingAssembly());
             services.AddWindowsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddServicesFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddSingleton(typeof(ISetting<>), typeof(FileJsonSetting<>));
+            services.AddSingleton<INotificationPublisher, NotificationPublisher>();
             services.AddNotificationReceiverFromAssembly(Assembly.GetExecutingAssembly());
             services.AddHostedService<HeartBeatService>();
         }

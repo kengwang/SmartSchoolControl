@@ -1,15 +1,13 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace SchoolComputerControl.Infrastructure.Models.DbModels;
+namespace SchoolComputerControl.Infrastructure.Models.DbModels.Base;
 
-
-public class Schedule
+public class ScheduleBase
 {
     public Guid Id { get; set; }
-    public Dictionary<string, Dictionary<string, string>> Actions { get; set; } = default!;
+    public Dictionary<string, KeyValuePair<string, string>> Actions { get; set; } = default!;
     public DateTime StartDateTime { get; set; }
     public DateTime ExpireDateTime { get; set; }
-    public List<Client> Clients { get; set; } = default!;
     public bool Enabled { get; set; }
     public List<Trigger> Triggers { get; set; } = default!;
 }
@@ -29,7 +27,7 @@ public class Trigger
 
 public class YearlyTrigger : Trigger
 {
-    public List<DateOnly> Months { get; set; } = default!;
+    public DateOnly Date { get; set; } = default!;
 }
 
 public class MonthlyTrigger : Trigger
@@ -39,18 +37,7 @@ public class MonthlyTrigger : Trigger
 
 public class WeeklyTrigger : Trigger
 {
-    public DayInWeek DayInWeek { get; set; }
-}
-
-public enum DayInWeek
-{
-    Monday = 1,
-    Tuesday = 1 << 1,
-    Wednesday = 1 << 2,
-    Thursday = 1 << 3,
-    Friday = 1 << 4,
-    Saturday = 1 << 5,
-    Sunday = 1 << 6
+    public List<int> DaysInWeek { get; set; } = default!;
 }
 
 public class DailyTrigger : Trigger

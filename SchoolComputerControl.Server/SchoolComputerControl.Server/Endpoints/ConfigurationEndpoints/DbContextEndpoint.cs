@@ -3,6 +3,7 @@ using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolComputerControl.Infrastructure.Models.DbModels;
+using SchoolComputerControl.Infrastructure.Models.DbModels.Base;
 using SchoolComputerControl.PluginBase;
 using SchoolComputerControl.Server.Interfaces;
 
@@ -29,7 +30,7 @@ public class ServerDbContext : DbContext
 {
     public DbSet<Admin> Admins { get; set; } = default!;
     public DbSet<Client> Clients { get; set; } = default!;
-    public DbSet<Schedule> Schedules { get; set; } = default!;
+    public DbSet<ServerSchedule> Schedules { get; set; } = default!;
 
     public ServerDbContext(DbContextOptions<ServerDbContext> options) : base(options)
     {
@@ -65,7 +66,7 @@ public class ServerDbContext : DbContext
             dbString => JsonSerializer.Deserialize(dbString,
                 ClientActionSerializeContext.Default.DictionaryStringDictionaryStringString)!
         );
-        modelBuilder.Entity<Schedule>()
+        modelBuilder.Entity<ServerSchedule>()
             .Property(action => action.Actions)
             .HasConversion(clientActionsConverter);
 
@@ -73,7 +74,7 @@ public class ServerDbContext : DbContext
             model => JsonSerializer.Serialize(model, ListTriggerSerializeContext.Default.ListTrigger),
             dbString => JsonSerializer.Deserialize(dbString, ListTriggerSerializeContext.Default.ListTrigger)!
         );
-        modelBuilder.Entity<Schedule>()
+        modelBuilder.Entity<ServerSchedule>()
             .Property(schedule => schedule.Triggers)
             .HasConversion(listTriggersConverter);
     }

@@ -7,5 +7,5 @@ public interface IPluginBase
     public int ApiVersion { get; }
     public List<PluginConfig> Configs { get; }
     public List<PluginAction> Actions { get; }
-    public Task HandleEvent(string eventId, string param);
+    public Task HandleEventAsync(string eventId, string param);
 }
